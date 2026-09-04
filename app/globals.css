@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  scrollbar-color: #2f6bff #0a0e17;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #08090c;
+  color: #edeff5;
+  font-family: var(--font-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Signature chamfered corner - reserved for the hero frame and a couple of
+   deliberate accent moments, NOT used as a default card treatment. */
+.chamfer {
+  clip-path: polygon(
+    18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px
+  );
+}
+.chamfer-sm {
+  clip-path: polygon(
+    10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px
+  );
+}
+
+.card {
+  background: #12151d;
+  border: 1px solid #21262f;
+}
+
+.nameplate {
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Power flow divider: an animated pulse traveling across a hairline */
+.power-divider {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(47,169,255,0.35), rgba(124,92,255,0.35), transparent);
+  overflow: hidden;
+}
+.power-divider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 30%;
+  background: linear-gradient(90deg, transparent, #7fe0ff, transparent);
+  animation: pulse-line 3.2s ease-in-out infinite;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid #4fc3ff;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: rgba(79,195,255,0.3);
+  color: #fff;
+}
+
+.container-page {
+  max-width: 84rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .container-page {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
